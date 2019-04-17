@@ -86,8 +86,9 @@ public class ChessBoard extends JPanel {
             
             int[][] move = engine.agentMove();
             int y00 = move[0][0], x00 = move[0][1], y11 = move[1][0], x11 = move[1][1];
-            //cells[y11][x11].setIcon(cells[y00][x00].getIcon());
-            //cells[y00][x00].setIcon(null);
+            System.out.printf("%d %d %d %d\n", y00,x00,y11,x11);
+            cells[y11][x11].setIcon(cells[y00][x00].getIcon());
+            cells[y00][x00].setIcon(null);
         }
         pieceSelected = false;
     }
@@ -99,7 +100,6 @@ public class ChessBoard extends JPanel {
                 for (int i = 0; i < cells.length; i++) {
                     for (int j = 0; j < cells[0].length; j++) {
                         if (e.getSource() == cells[i][j]) {
-                            System.out.printf("%d, %d\n", i,j);
                             
                             if (pieceSelected) {
                                 handleUserMove(y,x,i,j);
